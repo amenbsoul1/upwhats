@@ -144,7 +144,7 @@ def internal_check(conversation):
     return count, maximum[0], maximum[1]
 
 
-def interactive_system(conversation_members=("Steve", "Bill", "1"), max_conversation_size=300):
+def interactive_system(conversation_members=("Steve", "Bill"), max_conversation_size=300):
     conversation_size = 0
     conversation = []
     msg_last_id = 0
