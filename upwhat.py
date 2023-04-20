@@ -4,7 +4,7 @@ import datetime
 def current_time_to_str():
     time = datetime.datetime.now()
     return time.strftime("%H:%M:%S")
-   
+
 
 def is_member(username: str, conversation_members: tuple):
     flag = True
@@ -40,7 +40,7 @@ def conversation_to_string(conversation):
     msg1 = ''
     for msg in conversation:
         msg1 = msg1 + msg_to_string(msg)
-    return msg1.rstrip()
+    return msg1.rstrip('\n')
 
 
 def show_conversation(conversation):
