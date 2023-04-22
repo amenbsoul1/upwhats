@@ -56,7 +56,7 @@ def send_msg(username, msg_content, msg_last_id, conversation_size, max_conversa
         msg_last_id += 1
         conversation.append([int(msg_last_id), str(username), str(msg_content), str(current_time_to_str())])
         conversation_size += len(msg_content)
-        return msg_last_id, conversation_size
+        return msg_last_id,conversation_size
 
 
 def find_msg_index(msg_id, conversation):
@@ -108,11 +108,11 @@ def file_fixing(filename):
     with open(filename, "r") as file:
         lines = file.read().split("\n")
         for line in lines:
-            words = line.split()
+            words = line.split(" ")
             lis.append(' '.join([w[::-1] for w in words]))
     output = '\n'.join(lis)
 
-    output_file = "output_" + filename
+    output_file = "output_1" + filename
     with open(output_file, 'w') as new_file:
         new_file.write(output)
 
@@ -144,7 +144,7 @@ def internal_check(conversation):
     return count, maximum[0], maximum[1]
 
 
-def interactive_system(conversation_members=("Steve", "Bill"), max_conversation_size=300):
+def interactive_system(conversation_members=("Steve", "Bill", "1"), max_conversation_size=300):
     conversation_size = 0
     conversation = []
     msg_last_id = 0
@@ -169,8 +169,7 @@ def interactive_system(conversation_members=("Steve", "Bill"), max_conversation_
             elif choice == '2':
                 msg_content = input("Please type your message.\n")
                 prev_msg_last_id, prev_conversation_size = msg_last_id, conversation_size
-                msg_last_id, conversation_size = send_msg(username, msg_content, msg_last_id, conversation_size,
-                                                          max_conversation_size, conversation)
+                msg_last_id, conversation_size = send_msg(username, msg_content, msg_last_id, conversation_size,max_conversation_size, conversation)
                 if prev_msg_last_id == msg_last_id and prev_conversation_size == conversation_size:
                     print("There is not enough space in the storage!")
                 else:
